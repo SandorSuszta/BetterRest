@@ -1,21 +1,34 @@
-//
-//  ContentView.swift
-//  NeedRest
-//
-//  Created by Nataliia Shusta on 11/08/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     @State private var wakeUpTime = Date.now
     @State private var cofeeAnmmount = 1
-    @State private var sleepAmmount = 8
+    @State private var sleepAmmount = 8.0
     
     var body: some View {
         NavigationStack {
-            Text("Wake")
-                .navigationTitle("Better rest")
+            VStack{
+                Text("When do you want to wake up?")
+                    .font(.headline)
+                    .navigationTitle("Better rest")
+                
+                DatePicker("Please enter time", selection: $wakeUpTime, displayedComponents: .hourAndMinute )
+                    .labelsHidden()
+                
+                Text("Desired amount of sleep")
+                    .font(.headline)
+                
+                Stepper("\(sleepAmmount.formatted()) hours", value: $sleepAmmount, in: 4...12, step: 0.25)
+                
+                Text("Daily coffee intake")
+                    .font(.headline)
+                
+                Stepper(
+                    cofeeAnmmount == 1 ? "1 cup" : "\(cofeeAnmmount) cups",
+                    value: $cofeeAnmmount,
+                    in: 1...8
+                )
+            }
         }
     }
 }
