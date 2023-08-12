@@ -10,7 +10,6 @@ struct ContentView: View {
             VStack{
                 Text("When do you want to wake up?")
                     .font(.headline)
-                    .navigationTitle("Better rest")
                 
                 DatePicker("Please enter time", selection: $wakeUpTime, displayedComponents: .hourAndMinute )
                     .labelsHidden()
@@ -29,7 +28,15 @@ struct ContentView: View {
                     in: 1...8
                 )
             }
+            .navigationTitle("Better rest")
+            .toolbar {
+                Button("Calculate", action: calculateBedtime)
+            }
         }
+    }
+    
+    private func calculateBedtime() {
+        
     }
 }
 
