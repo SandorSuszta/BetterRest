@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var wakeUpTime = Date.now
+    @State private var cofeeAnmmount = 1
+    @State private var sleepAmmount = 8
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            Text("Wake")
+                .navigationTitle("Better rest")
         }
-        .padding()
     }
 }
 
